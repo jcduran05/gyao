@@ -1,0 +1,23 @@
+<div class="section">
+  <!-- Shows Section   -->
+  <div class="row">
+    <div class="col s12 m12">
+
+      <div class="col s12 m6 l4" ng-repeat="show in userData.user_shows">
+        <div class="card">
+          <div class="card-image">
+            <img src="img/getsuyou.jpg">
+            <span class="card-title">{{ show.name }}</span>
+          </div>
+          <div class="card-content">
+            <p>{{ show.showId }}</p>
+          </div>
+          <div class="card-action" ng-show="user">
+            <a class="waves-effect waves-light btn red" ng-click="addToUserShows(show.id)">Remove</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
