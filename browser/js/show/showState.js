@@ -1,4 +1,5 @@
 app.config(function($stateProvider){
+
   $stateProvider.state('allShows', {
     url:'/all-shows',
     templateUrl: 'js/show/templates/shows.html',
@@ -10,7 +11,7 @@ app.config(function($stateProvider){
     }
   });
 
-    $stateProvider.state('singleShow', {
+  $stateProvider.state('singleShow', {
     url:'/shows/:showId',
     templateUrl: 'js/show/templates/show.html',
     controller: 'ShowCtrl',
@@ -20,4 +21,5 @@ app.config(function($stateProvider){
       }
     }
   });
+
 });

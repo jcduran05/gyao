@@ -15,9 +15,6 @@ name in the environment files.
 var chalk = require('chalk');
 var db = require('./server/db');
 var User = db.model('user');
-var Show = db.model('show');
-var UserShow = db.model('user_show');
-var Episode = db.model('episode');
 var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {

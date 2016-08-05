@@ -4,7 +4,6 @@ var _ = require('lodash');
 var Sequelize = require('sequelize');
 
 var db = require('../_db');
-var UserShow = require('./user_show');
 var Show = require('./show');
 
 module.exports = db.define('user', {
@@ -27,10 +26,17 @@ module.exports = db.define('user', {
         type: Sequelize.STRING
     }
 }, {
-    defaultScope: {
-        include: [{
-            model: Show
-        }]
+        // defaultScope: {
+    //     include: [{
+    //         model: Show
+    //     }]
+    // },
+    scopes: {
+        userShows: {
+            include: [{
+                model: Show,
+            }]
+        }
     },
     instanceMethods: {
         sanitize: function () {

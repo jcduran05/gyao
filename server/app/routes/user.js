@@ -8,7 +8,7 @@ var Show = db.model('show');
 var Promise = require('bluebird')
 
 router.get('/shows', function (req, res, next) {
-  User.findById(req.user.id)
+  User.scope('userShows').findById(req.user.id)
   .then(function(userShows) {
     res.status(200).send(userShows);
   })

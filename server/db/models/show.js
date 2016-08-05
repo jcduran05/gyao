@@ -3,7 +3,7 @@ var _ = require('lodash');
 var Sequelize = require('sequelize');
 
 var db = require('../_db');
-
+var Episode = require('./episode')
 
 module.exports = db.define('show', {
     name: {
@@ -15,7 +15,17 @@ module.exports = db.define('show', {
     url: {
         type: Sequelize.STRING
     },
+    picture: {
+        type: Sequelize.STRING
+    },
 }, {
+    scopes: {
+        showEpisodes: {
+            include: [{
+                model: Episode,
+            }]
+        }
+    },
     instanceMethods: {},
     classMethods: {}
 });

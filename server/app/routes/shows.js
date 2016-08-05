@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:showId', function (req, res, next) {
-  Show.findById(req.params.showId)
+  Show.scope('showEpisodes').findById(req.params.showId)
   .then(function(shows) {
     res.status(200).send(shows);
   })

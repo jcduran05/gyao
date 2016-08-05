@@ -8,9 +8,9 @@ module.exports = db.define('episode', {
     name: {
         type: Sequelize.STRING
     },
-    url: {
-        type: Sequelize.STRING
-    },
+    // url: {
+    //     type: Sequelize.ARRAY(Sequelize.TEXT)
+    // },
     date: {
         type: Sequelize.DATE
     },
