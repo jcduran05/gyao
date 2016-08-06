@@ -15,12 +15,12 @@ router.get('/shows', function (req, res, next) {
 });
 
 router.post('/shows/add/:showId', function (req, res, next) {
-  var data = {
-    showId: req.params.showId,
-    userId: req.body.id || req.user.id
-  };
-
-  UserShow.create(data)
+  UserShow.findOrCreate({
+    where: {
+      showId: req.params.showId,
+      userId: req.user.id
+    }
+  })
   .then(function(userShow) {
     res.status(200).send(userShow);
   })

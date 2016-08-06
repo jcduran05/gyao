@@ -13,6 +13,8 @@ module.exports = function (db) {
     // /api so they are isolated from our GET /* wildcard.
     app.use('/api', require('./routes'));
 
+    // Email settings and routes
+    // require('./mail')(app, db);
 
     /*
      This middleware will catch any URLs resembling a file extension

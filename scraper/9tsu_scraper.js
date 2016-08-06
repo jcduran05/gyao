@@ -111,8 +111,6 @@ Show.find({
   process.exit(1);
 })
 
-
-
 //Testing
 // Create array to hold episodes
 // found for a given show

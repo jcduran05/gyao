@@ -18,5 +18,13 @@ app.factory('showFactory', function($http, $log) {
     .catch($log.error);
   }
 
+  Shows.addToMyShows = function(showId) {
+    return $http.post('/api/user/shows/add/' + showId)
+    .then(function(response) {
+      return response.data;
+    })
+    .catch($log.error);
+  }
+
   return Shows;
 });

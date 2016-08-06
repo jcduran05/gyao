@@ -1,8 +1,11 @@
-app.controller('ShowsCtrl', function($scope, $rootScope, $log, allShows) {
+app.controller('ShowsCtrl', function($scope, $rootScope, $log, allShows, showFactory) {
   $scope.shows = allShows;
 
-  $scope.addToUserShows = function() {
-    console.log($rootScope.user)
+  $scope.addToMyShows = function(showId) {
+    showFactory.addToMyShows(showId)
+    .then(function() {
+      console.log('made it');
+    });
   }
 
 });
