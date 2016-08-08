@@ -1,10 +1,11 @@
 <div class="navbar-fixed">
 <nav>
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
+    <a href="/" class="brand-logo"><i class="large material-icons">youtube_searched_for</i></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()"><a ui-sref="{{ item.state }}">{{ item.label }}</a></li>
-      <li ng-show="!user"><button ng-show="!user" ui-sref="login" class="btn login-button">Login</button></li>
+      <li ng-show="!user"><button ng-show="!user" ui-sref="login" class="waves-effect waves-light btn">Login</button></li>
       <li ng-show="user"><a ng-click="logout()">Logout</a></li>
     </ul>
   </div>

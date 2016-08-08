@@ -1,7 +1,7 @@
 app.factory('showFactory', function($http, $log) {
-  var Shows = {};
+  var Show = {};
 
-  Shows.findAll = function() {
+  Show.findAll = function() {
     return $http.get('/api/shows')
     .then(function(response) {
       return response.data;
@@ -9,7 +9,7 @@ app.factory('showFactory', function($http, $log) {
     .catch($log.error);
   };
 
-  Shows.findOne = function(showId) {
+  Show.findOne = function(showId) {
     return $http.get('/api/shows/' + showId)
     .then(function(response) {
       console.log(response.data);
@@ -18,7 +18,7 @@ app.factory('showFactory', function($http, $log) {
     .catch($log.error);
   }
 
-  Shows.addToMyShows = function(showId) {
+  Show.addToMyShows = function(showId) {
     return $http.post('/api/user/shows/add/' + showId)
     .then(function(response) {
       return response.data;
@@ -26,5 +26,13 @@ app.factory('showFactory', function($http, $log) {
     .catch($log.error);
   }
 
-  return Shows;
+  Show.scrapeLinks = function(showId) {
+    return $http.get('/api/shows/scrape/' + showId)
+    .then(function(response) {
+      return response.data;
+    })
+    .catch($log.error);
+  }
+
+  return Show;
 });

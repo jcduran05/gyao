@@ -6,7 +6,10 @@ var db = require('../_db');
 
 module.exports = db.define('episode_url', {
     url: {
-        type: Sequelize.STRING(400)
+        type: Sequelize.STRING(800)
+    },
+    site: {
+        type: Sequelize.STRING
     },
     picture: {
         type: Sequelize.STRING

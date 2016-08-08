@@ -4,8 +4,6 @@ module.exports = router;
 var db = require('../../db')
 var User = db.model('user');
 var UserShow = db.model('user_show');
-var Show = db.model('show');
-var Promise = require('bluebird')
 
 router.get('/shows', function (req, res, next) {
   User.scope('userShows').findById(req.user.id)

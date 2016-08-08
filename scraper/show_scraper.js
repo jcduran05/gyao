@@ -19,13 +19,17 @@ $('.variety').next().find('li').each(function() {
   var showName = data.text();
   var showUrl = data.find('a').attr('href');
 
+  var search_showName = showName;
+  if (showName == 'another sky') search_showName = 'アナザースカイ';
+  if (showName == '世界の果てまでイッテQ！') search_showName = '世界の果てまでイッテQ';
+
   showObj = {
     name: showName,
+    search_name: search_showName,
     url: showUrl
   };
   shows.push(showObj);
 });
-
 
 Show.bulkCreate(shows)
 .then(function() {
