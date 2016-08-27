@@ -1,10 +1,11 @@
-app.controller('ShowsCtrl', function($scope, $rootScope, $log, allShows, showFactory) {
+app.controller('ShowsCtrl', function($scope, $rootScope, $log, allShows, userShows, showFactory) {
   $scope.shows = allShows;
+  $scope.userData = userShows;
 
   $scope.addToMyShows = function(showId) {
     showFactory.addToMyShows(showId)
     .then(function() {
-      console.log('made it');
+      // Show added. Consider displaying some notice
     });
   }
 

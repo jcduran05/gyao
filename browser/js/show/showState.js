@@ -7,6 +7,9 @@ app.config(function($stateProvider){
     resolve: {
       allShows: function(showFactory){
         return showFactory.findAll();
+      },
+      userShows: function(userFactory){
+        return userFactory.findUserShows();
       }
     }
   });
