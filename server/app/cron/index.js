@@ -13,7 +13,8 @@ UserShow.findAll()
 .then(function(userShows) {
     var jobs = {};
     userShows.forEach(function(userShow, idx) {
-        jobs['job' + idx] = schedule.scheduleJob('*/10 * * * *', function(){
+
+        jobs['job' + idx] = schedule.scheduleJob('*/1 * * * *', function(){
             if (userShow.showId == 18) {
                 googleCSE.run(config.googleCSE_9tsuCX, '9tsu', userShow.showId);
                 googleCSE.run(config.googleCSE_dailyCX, 'daily', userShow.showId);
@@ -21,5 +22,7 @@ UserShow.findAll()
             }
         });
     });
-    return;
+
+    console.log(jobs);
+    return userShows;
 });
