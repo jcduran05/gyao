@@ -1,44 +1,32 @@
 // //We're using the express framework and the mailgun-js wrapper
 var express = require('express');
-var Mailgun = require('mailgun-js');
-//use nunjucks to render html templates w/ variables
-var nunjucks = require('nunjucks');
+var nodemailer = require('nodemailer');
+var mg = require('nodemailer-mailgun-transport');
+var config = require('../../../config.json');
 
-var app = express();
+// This is your API key that you retrieve from www.mailgun.com/cp (free up to 10K monthly emails)
+var auth = {
+  auth: {
+    api_key: config.mailgunKey,
+    domain: config.mailgunDomain
+  }
+}
 
-// function to send user email given template and subject
-var mailSender = function (userEmail, subject, html) {
-    // create new mailgun instance with credentials
-    var mailgun = new Mailgun({
-      apiKey: api_key,
-      domain: 'sandboxXX.mailgun.org'
-    });
-    // setup the basic mail data
-    var mailData = {
-      from: '',
-      to: 'userEmail',
-      subject:  subject,
-      html: html,
-      // two other useful parameters
-      // testmode lets you make API calls
-      // without actually firing off any emails
-      'o:testmode': true,
-      // you can specify a delivery time
-      // up to three days in advance for
-      // your emails to send.
-      // 'o:deliverytime': 'Thu, 13 Oct 2011 18:02:00 GMT'
-    };
-    // send your mailgun instance the mailData
-    mailgun.messages().send(mailData, function (err, body) {
-      // If err console.log so we can debug
-      if (err) {
-        console.log('failed: ' + err);
-      } else {
-        console.log('Did it. Sent: ', body);
-      }
-    });
+var nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
-    return;
-};
-
-mailSender(from_who, 'test subject', '<p>test</p>');
+nodemailerMailgun.sendMail({
+  from: config.nodeMailerTestEmail,
+  to: config.nodeMailerTestEmail, // An array if you have multiple recipients.
+  subject: 'Hey you, awesome!',
+  //You can use "html:" to send HTML email content. It's magic!
+  // html: '<b>Wow Big powerful letters</b>',
+  //You can use "text:" to send plain-text content. It's oldschool!
+  text: 'Mailgun rocks, pow pow!'
+}, function (err, info) {
+  if (err) {
+    console.log('Error: ' + err);
+  }
+  else {
+    console.log('Response: ' + info);
+  }
+});
