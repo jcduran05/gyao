@@ -1,3 +1,12 @@
+var has = function(obj, key) {
+  return key.split(".").every(function(x) {
+      if(typeof obj != "object" || obj === null || ! x in obj)
+          return false;
+      obj = obj[x];
+      return true;
+  });
+};
+
 module.exports = {
   run: function(cxCode, site, showIdToScrape) {
 
@@ -43,7 +52,7 @@ module.exports = {
       // console.log('=============');
       // console.log('=============');
       customSearch.cse.list({q: currentShowName, key: config.googleCSEKey, cx: cxCode}, function(err, body) {
-        var resultsObj = body
+        var resultsObj = body;
         // found for a given show
         for (var idx in resultsObj.items) {
           // console.log(resultsObj.items[idx]);
@@ -54,14 +63,16 @@ module.exports = {
           var specialCharsRegex = /[【】「」]/g;
 
           // Contain episode name, date, and url
-          var epUrl = resultsObj.items[idx].link ? resultsObj.items[idx].link : '';
+          var resultData = resultsObj.items[idx];
+          var epUrl = has(resultData,'link') ? resultData.link : '';
           console.log('=============');
           console.log('=============');
           console.log(epUrl)
-          console.log(resultsObj.items[idx]);
+          console.log(resultData);
+
           // Need to case as not all are links
           if (epUrl) {
-            var epName =  resultsObj.items[idx].hasOwnProperty('pagemap') ? resultsObj.items[idx].pagemap.metatags[0]['og:title'] : '' ;
+            var epName = has(resultData,'pagemap.metatags.og:title') ? resultData.pagemap.metatags[0]['og:title'] : '' ;
             console.log(epName);
             var epDate = dateRegex.exec(epName);
           }
