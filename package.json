@@ -1,7 +1,9 @@
 {
-  "name": "FullstackGeneratedApp",
+  "name": "GyaoApp",
   "version": "1.0.0",
   "description": "A generated project at Fullstack Academy",
+  "author": "Juan Duran",
+  "license": "MIT",
   "main": "server/start.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html server/start.js",
