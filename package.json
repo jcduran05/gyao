@@ -7,7 +7,7 @@
   "main": "server/start.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html server/start.js",
-   "postinstall": "gulp build && bower install"
+    "postinstall": "gulp build && bower install"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -60,6 +60,7 @@
     "mailgun-js": "^0.7.11",
     "materialize-css": "^0.97.7",
     "moment": "^2.14.1",
+    "node-env-file": "^0.1.8",
     "node-schedule": "^1.1.1",
     "nodemailer": "^2.6.0",
     "nodemailer-mailgun-transport": "^1.2.2",

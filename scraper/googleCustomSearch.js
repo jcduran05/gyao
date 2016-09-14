@@ -27,7 +27,7 @@ module.exports = {
 
     var google = require('googleapis');
     var customSearch = google.customsearch('v1');
-    var config = require('../config.json');
+    // var env = require('node-env-file');
 
     // Create array to hold episodes
     var show_episodes = [];
@@ -47,11 +47,11 @@ module.exports = {
       // console.log('=============');
       // console.log('=============');
       // console.log(currentShowName);
-      // console.log(config.googleCSEKey);
+      // console.log(process.env.googleCSEKey);
       // console.log(cxCode);
       // console.log('=============');
       // console.log('=============');
-      customSearch.cse.list({q: currentShowName, key: config.googleCSEKey, cx: cxCode}, function(err, body) {
+      customSearch.cse.list({q: currentShowName, key: process.env.googleCSEKey, cx: cxCode}, function(err, body) {
         var resultsObj = body;
         // found for a given show
         for (var idx in resultsObj.items) {
