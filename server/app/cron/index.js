@@ -7,7 +7,6 @@ var chalk = require('chalk');
 var UserShow = db.model('user_show');
 var schedule = require('node-schedule');
 var googleCSE = require('../../../scraper/googleCustomSearch.js');
-var config = require('../../../config.json');
 
 UserShow.findAll()
 .then(function(userShows) {
