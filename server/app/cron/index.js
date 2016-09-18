@@ -15,8 +15,8 @@ UserShow.findAll()
 
         jobs['job' + idx] = schedule.scheduleJob('*/1 * * * *', function(){
             if (userShow.showId == 18) {
-                googleCSE.run(config.googleCSE_9tsuCX, '9tsu', userShow.showId);
-                googleCSE.run(config.googleCSE_dailyCX, 'daily', userShow.showId);
+                googleCSE.run(process.env.googleCSE_9tsuCX, '9tsu', userShow.showId);
+                googleCSE.run(process.env.googleCSE_dailyCX, 'daily', userShow.showId);
                 console.log(chalk.bgGreen.bold('Cron ran successfully for id 18!'));
             }
         });

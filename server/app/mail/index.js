@@ -6,16 +6,16 @@ var mg = require('nodemailer-mailgun-transport');
 // This is your API key that you retrieve from www.mailgun.com/cp (free up to 10K monthly emails)
 var auth = {
   auth: {
-    api_key: config.mailgunKey,
-    domain: config.mailgunDomain
+    api_key: process.env.mailgunKey,
+    domain: process.env.mailgunDomain
   }
 }
 
 var nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
 nodemailerMailgun.sendMail({
-  from: config.nodeMailerTestEmail,
-  to: config.nodeMailerTestEmail, // An array if you have multiple recipients.
+  from: process.env.nodeMailerTestEmail,
+  to: process.env.nodeMailerTestEmail, // An array if you have multiple recipients.
   subject: 'Hey you, awesome!',
   //You can use "html:" to send HTML email content. It's magic!
   // html: '<b>Wow Big powerful letters</b>',

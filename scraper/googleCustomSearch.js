@@ -27,7 +27,6 @@ module.exports = {
 
     var google = require('googleapis');
     var customSearch = google.customsearch('v1');
-    // var env = require('node-env-file');
 
     // Create array to hold episodes
     var show_episodes = [];

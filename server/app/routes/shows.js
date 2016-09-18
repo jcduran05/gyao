@@ -5,7 +5,6 @@ var db = require('../../db')
 var Show = db.model('show');
 var UserShow = db.model('user_show');
 var googleCSE = require('../../../scraper/googleCustomSearch.js');
-// var env = require('node-env-file');
 
 router.get('/', function (req, res, next) {
   Show.findAll()
